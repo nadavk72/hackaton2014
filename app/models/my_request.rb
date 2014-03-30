@@ -2,6 +2,7 @@ class MyRequest < ActiveRecord::Base
 	before_save :checkInjection
 end
 
+# test
 def checkInjection
 	# script
 	if (self.request_parameters =~ /((\%3C)|<)((\%2F)|\/)*[a-z0-9\%]+((\%3E)|>)/) 
