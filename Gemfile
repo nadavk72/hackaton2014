@@ -47,3 +47,7 @@ end
 gem 'chartkick'	
 gem 'groupdate'
 gem 'pg'
+
+group :production do
+  gem 'rails_12factor', '0.0.2'
+end
