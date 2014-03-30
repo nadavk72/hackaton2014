@@ -1,0 +1,36 @@
+
+<%= line_chart [
+  {name: "Total", data:  MyRequest.group_by_minute(:created_at).count},
+  {name: "invalid", data:  MyRequest.where(is_valid: false).group_by_minute(:created_at).count}
+] %>
+
+<h1>Listing my_requests</h1>
+  
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Agent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @my_requests.each do |my_request| %>
+      <tr>
+        <td><%= my_request.client_id %></td>
+        <td><%= my_request.agent_id %></td>
+        <td><%= link_to 'Show', my_request %></td>
+        <td><%= link_to 'Edit', edit_my_request_path(my_request) %></td>
+        <td><%= link_to 'Destroy', my_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New My request', new_my_request_path %>
+

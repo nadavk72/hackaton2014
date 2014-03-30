@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: postgres
+  pool: 5
+  username: postgres
+  password: blayers1

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @my_request.client_id %>
+</p>
+
+<p>
+  <strong>Agent:</strong>
+  <%= @my_request.agent_id %>
+</p>
+
+<%= link_to 'Edit', edit_my_request_path(@my_request) %> |
+<%= link_to 'Back', my_requests_path %>

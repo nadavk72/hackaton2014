@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @request_datum.date %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @request_datum.client_id %>
+</p>
+
+<p>
+  <strong>Agent:</strong>
+  <%= @request_datum.agent_id %>
+</p>
+
+<%= link_to 'Edit', edit_request_datum_path(@request_datum) %> |
+<%= link_to 'Back', request_data_path %>
