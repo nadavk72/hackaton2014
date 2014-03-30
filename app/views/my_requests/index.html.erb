@@ -1,16 +1,25 @@
 
+<h1>Submitted Requests</h1>
+
 <%= line_chart [
   {name: "Total", data:  MyRequest.group_by_minute(:created_at).count},
-  {name: "invalid", data:  MyRequest.where(is_valid: false).group_by_minute(:created_at).count}
+  {name: "Attacks", data:  MyRequest.where(is_valid: false).group_by_minute(:created_at).count}
 ] %>
 
-<h1>Listing my_requests</h1>
+<h1>Attacks By GEO Location</h1>
+<%= geo_chart MyRequest.group(:country).count %>
+
+<h1>Submitted Requests</h1>
   
-<table>
+<table border="1">
   <thead>
     <tr>
+      <th>Request ID</th>
+      <th>Timestamp</th>
       <th>Client</th>
       <th>Agent</th>
+      <th>Country</th>
+      <th>Attack Type</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,8 +29,12 @@
   <tbody>
     <% @my_requests.each do |my_request| %>
       <tr>
+        <td><%= my_request.id %></td>
+        <td><%= my_request.created_at %></td>
         <td><%= my_request.client_id %></td>
         <td><%= my_request.agent_id %></td>
+        <td><%= my_request.country %></td>
+        <td><%= my_request.attack_type %></td>
         <td><%= link_to 'Show', my_request %></td>
         <td><%= link_to 'Edit', edit_my_request_path(my_request) %></td>
         <td><%= link_to 'Destroy', my_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,4 +46,5 @@
 <br>
 
 <%= link_to 'New My request', new_my_request_path %>
+
 
